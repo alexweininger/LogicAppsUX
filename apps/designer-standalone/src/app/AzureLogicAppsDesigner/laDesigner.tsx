@@ -1,3 +1,4 @@
+import { StandaloneOAuthService } from '../../services/StandaloneOAuthService/StandaloneOAuthService';
 import type { RootState } from '../../state/store';
 import { DesignerCommandBar } from './DesignerCommandBar';
 import type { ConnectionAndAppSetting, ConnectionsData, ParametersData } from './Models/Workflow';
@@ -23,7 +24,6 @@ import {
   ApiManagementInstanceService,
   BaseAppServiceService,
   BaseGatewayService,
-  BaseOAuthService,
   StandardConnectionService,
   StandardConnectorService,
   StandardOperationManifestService,
@@ -348,7 +348,7 @@ const getDesignerServices = (
     isDev: false,
   });
 
-  const oAuthService = new BaseOAuthService({
+  const oAuthService = new StandaloneOAuthService({
     apiVersion: '2018-07-01-preview',
     baseUrl,
     httpClient,
