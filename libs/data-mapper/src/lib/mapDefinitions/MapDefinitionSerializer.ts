@@ -97,6 +97,7 @@ export const generateMapDefinitionBody = (
       }
     })
     .sort((nodeA, nodeB) => targetSchemaSortArray.indexOf(nodeA[0]) - targetSchemaSortArray.indexOf(nodeB[0]));
+  targetSchemaConnections.reverse();
 
   targetSchemaConnections.forEach(([_key, connection]) => {
     const flattenedInputs = flattenInputs(connection.inputs);
