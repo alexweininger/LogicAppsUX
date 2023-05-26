@@ -59,7 +59,7 @@ export class BaseOAuthService implements IOAuthService {
     return new Promise(() => null);
   }
 
-  public fetchConsentUrlForConnection(_connectionId: string) {
+  public fetchConsentUrlForConnection(_connectionId: string, _popupId: string) {
     return new Promise<string>(() => 'null');
   }
 

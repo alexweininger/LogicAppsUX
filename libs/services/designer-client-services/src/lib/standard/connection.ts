@@ -414,8 +414,9 @@ export class StandardConnectionService extends BaseConnectionService {
     let oAuthPopupInstance: IOAuthPopup | undefined;
 
     try {
-      const consentUrl = await oAuthService.fetchConsentUrlForConnection(connectionId);
-      oAuthPopupInstance = oAuthService.openLoginPopup({ consentUrl });
+      const popupId = Date.now().toString();
+      const consentUrl = await oAuthService.fetchConsentUrlForConnection(connectionId, popupId);
+      oAuthPopupInstance = oAuthService.openLoginPopup({ consentUrl, popupId });
 
       const loginResponse = await oAuthPopupInstance.loginPromise;
       if (loginResponse.error) {

@@ -11,7 +11,7 @@ export interface LoginResult {
 export interface IOAuthService {
   openLoginPopup(options: OAuthPopupOptions): IOAuthPopup;
 
-  fetchConsentUrlForConnection: (connectionId: string) => Promise<string>;
+  fetchConsentUrlForConnection: (connectionId: string, popupId: string) => Promise<string>;
   confirmConsentCodeForConnection: (connectionId: string, code: string) => Promise<any>;
 }
 
@@ -31,6 +31,7 @@ export interface IOAuthPopup {
 
 export interface OAuthPopupOptions {
   consentUrl: string;
+  popupId: string;
 }
 
 let service: IOAuthService;

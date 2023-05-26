@@ -103,8 +103,9 @@ export class ConsumptionConnectionService extends BaseConnectionService {
         /* shouldTestConnection */ false
       );
       const oAuthService = OAuthService();
-      const consentUrl = await oAuthService.fetchConsentUrlForConnection(connectionId);
-      const oAuthPopupInstance: IOAuthPopup = oAuthService.openLoginPopup({ consentUrl });
+      const popupId = Date.now().toString();
+      const consentUrl = await oAuthService.fetchConsentUrlForConnection(connectionId, popupId);
+      const oAuthPopupInstance: IOAuthPopup = oAuthService.openLoginPopup({ consentUrl, popupId });
 
       const loginResponse = await oAuthPopupInstance.loginPromise;
       if (loginResponse.error) {
